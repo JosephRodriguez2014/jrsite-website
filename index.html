@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JR SITE LLC | Premium Construction & Asphalt | Puerto Rico</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+        .heading-font { font-family: 'Playfair Display', sans-serif; }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(15,23,42,0.75), rgba(15,23,42,0.85)), url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
+        }
+        
+        .red-button {
+            background: linear-gradient(90deg, #b91c1c, #ef4444);
+            color: white;
+        }
+        .red-button:hover {
+            background: linear-gradient(90deg, #ef4444, #b91c1c);
+            transform: translateY(-2px);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 95%;
+            max-height: 95%;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.5);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-white">
+    <!-- NAVBAR -->
+    <nav class="bg-slate-950 border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <img src="jrsite-logo.png" alt="JR SITE LLC Logo" class="h-14 w-auto object-contain">
+                <div>
+                    <h1 class="heading-font text-3xl font-bold tracking-tight">JR SITE</h1>
+                    <p class="text-xs text-red-400 -mt-1 tracking-widest">LLC • PUERTO RICO</p>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm uppercase font-medium">
+                <a href="#services" class="hover:text-red-400">Services</a>
+                <a href="#projects" class="hover:text-red-400">Projects</a>
+                <a href="#reviews" class="hover:text-red-400">Reviews</a>
+                <a href="#about" class="hover:text-red-400">About</a>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <a href="tel:7872781125" class="hidden sm:flex items-center gap-2 px-6 h-11 border border-slate-700 rounded-2xl hover:border-red-400">
+                    <i class="fa-solid fa-phone"></i> (787) 278-1125
+                </a>
+                <a href="#contact" class="red-button px-8 py-3 rounded-2xl font-semibold flex items-center gap-2">
+                    GET FREE QUOTE →
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero-bg min-h-screen flex items-center">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-6 py-2 rounded-full text-sm mb-6">
+                    🇵🇷 PUERTO RICO'S PREMIUM CONSTRUCTION PARTNER
+                </div>
+                <h1 class="heading-font text-6xl md:text-7xl leading-none font-bold tracking-tighter">
+                    WE BUILD THE<br>FUTURE OF<br><span class="text-red-400">PUERTO RICO</span>
+                </h1>
+                <p class="mt-6 text-xl text-slate-200">Luxury asphalt paving • Expert earthwork • Precision demolition • World-class general construction</p>
+                
+                <div class="mt-10 flex flex-wrap gap-4">
+                    <a href="#contact" class="red-button text-lg px-10 py-5 rounded-3xl font-semibold flex items-center gap-3">
+                        REQUEST YOUR QUOTE TODAY →
+                    </a>
+                    <a href="https://www.instagram.com/jrsitellc/" target="_blank" class="border border-white/60 hover:border-red-400 px-8 py-5 rounded-3xl flex items-center gap-2 text-lg">
+                        <i class="fa-brands fa-instagram"></i> @jrsitellc
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-24 bg-slate-900">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-5xl font-semibold">Our Premium Services</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="bg-slate-800 p-8 rounded-3xl">
+                    <h3 class="text-2xl font-semibold mb-3">Asphalt Paving & Milling</h3>
+                    <p class="text-slate-400">High-quality hot mix asphalt, cold milling, seal coating and precision paving.</p>
+                </div>
+                <div class="bg-slate-800 p-8 rounded-3xl">
+                    <h3 class="text-2xl font-semibold mb-3">Earthwork & Excavation</h3>
+                    <p class="text-slate-400">Site preparation, grading, and large-scale earth moving with modern equipment.</p>
+                </div>
+                <div class="bg-slate-800 p-8 rounded-3xl">
+                    <h3 class="text-2xl font-semibold mb-3">Demolition & Clearing</h3>
+                    <p class="text-slate-400">Safe structural demolition and complete site clearing across Puerto Rico.</p>
+                </div>
+                <div class="bg-slate-800 p-8 rounded-3xl">
+                    <h3 class="text-2xl font-semibold mb-3">General Construction</h3>
+                    <p class="text-slate-400">Full-service infrastructure and commercial construction projects.</p>
+                </div>
+                <div class="bg-slate-800 p-8 rounded-3xl">
+                    <h3 class="text-2xl font-semibold mb-3">Trucking / Aggregate Hauling</h3>
+                    <p class="text-slate-400">Reliable hauling of aggregates, materials, and equipment across Puerto Rico.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-24 bg-white text-slate-950">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="text-center mb-12">
+                <h2 class="heading-font text-5xl font-semibold">Featured Projects</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- Doctor Center Expansion -->
+                <div>
+                    <h3 class="font-semibold text-2xl mb-2">Doctor Center Expansion</h3>
+                    <p class="text-red-600 text-sm mb-6">Dorado, Puerto Rico</p>
+                    <div class="grid grid-cols-3 gap-3">
+                        <img onclick="showImage(this.src)" src="Project1-HospitalDoradoDoctorCenter1.JPG" alt="Doctor Center Expansion" class="rounded-2xl h-52 object-cover cursor-pointer hover:scale-105 transition-transform">
+                        <img onclick="showImage(this.src)" src="Project1-HospitalDoradoDoctorCenter2.JPG" alt="Doctor Center Expansion" class="rounded-2xl h-52 object-cover cursor-pointer hover:scale-105 transition-transform">
+                        <img onclick="showImage(this.src)" src="Project1-HospitalDoradoDoctorCenter3.JPG" alt="Doctor Center Expansion" class="rounded-2xl h-52 object-cover cursor-pointer hover:scale-105 transition-transform">
+                    </div>
+                    <p class="text-slate-600 mt-4">Earthwork services</p>
+                </div>
+
+                <!-- Laderas De Palmas -->
+                <div>
+                    <h3 class="font-semibold text-2xl mb-2">Laderas De Palmas</h3>
+                    <p class="text-red-600 text-sm mb-6">Humacao, Puerto Rico</p>
+                    <div class="grid grid-cols-3 gap-3">
+                        <img onclick="showImage(this.src)" src="Project2-LaderasDePalmas,Humacao2.JPG" alt="Laderas De Palmas" class="rounded-2xl h-52 object-cover cursor-pointer hover:scale-105 transition-transform">
+                        <img onclick="showImage(this.src)" src="Project2-LaderasDePalmas,Humacao3.JPG" alt="Laderas De Palmas" class="rounded-2xl h-52 object-cover cursor-pointer hover:scale-105 transition-transform">
+                        <img onclick="showImage(this.src)" src="Project2-LaderasDePalmas,Humacao4.JPG" alt="Laderas De Palmas" class="rounded-2xl h-52 object-cover cursor-pointer hover:scale-105 transition-transform">
+                    </div>
+                    <p class="text-slate-600 mt-4">Earthwork and Sitework services</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="if(event.target.id === 'lightbox') this.classList.remove('active')">
+        <img id="lightbox-image" src="" alt="">
+    </div>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 bg-slate-900">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="grid lg:grid-cols-12 gap-16">
+                <div class="lg:col-span-5">
+                    <h2 class="heading-font text-5xl font-semibold">Let's Build Something Extraordinary</h2>
+                    <p class="mt-6 text-slate-300">Tell us about your project.</p>
+                    <div class="mt-12 space-y-8">
+                        <div>
+                            <p class="font-medium text-red-400">Call us</p>
+                            <a href="tel:7872781125" class="text-3xl hover:text-red-400">(787) 278-1125</a>
+                        </div>
+                        <div>
+                            <p class="font-medium text-red-400">Email us</p>
+                            <a href="mailto:Jrsitellc@hotmail.com" class="text-3xl hover:text-red-400">Jrsitellc@hotmail.com</a>
+                        </div>
+                        <div>
+                            <p class="font-medium text-red-400">Instagram</p>
+                            <a href="https://www.instagram.com/jrsitellc/" target="_blank" class="text-3xl hover:text-red-400">@jrsitellc</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:col-span-7 bg-white text-slate-950 rounded-3xl p-10">
+                    <form onsubmit="handleSubmit(event); return false;">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-medium mb-2">NAME</label>
+                                <input type="text" id="name" required class="w-full border border-slate-300 rounded-2xl px-5 py-4" placeholder="Your name">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium mb-2">PHONE</label>
+                                <input type="tel" id="phone" required class="w-full border border-slate-300 rounded-2xl px-5 py-4" placeholder="(787) ___-____">
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <label class="block text-xs font-medium mb-2">EMAIL</label>
+                            <input type="email" id="email" class="w-full border border-slate-300 rounded-2xl px-5 py-4" placeholder="your@email.com">
+                        </div>
+                        <div class="mt-6">
+                            <label class="block text-xs font-medium mb-2">PROJECT TYPE</label>
+                            <select id="type" class="w-full border border-slate-300 rounded-2xl px-5 py-4">
+                                <option>Asphalt Paving</option>
+                                <option>Earthwork</option>
+                                <option>Demolition</option>
+                                <option>General Construction</option>
+                                <option>Trucking / Aggregate Hauling</option>
+                            </select>
+                        </div>
+                        <div class="mt-6">
+                            <label class="block text-xs font-medium mb-2">MESSAGE</label>
+                            <textarea id="message" rows="5" class="w-full border border-slate-300 rounded-3xl px-5 py-4" placeholder="Describe your project..."></textarea>
+                        </div>
+                        <button type="submit" class="red-button w-full mt-10 py-5 rounded-3xl text-lg font-semibold">SEND INQUIRY →</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 text-white/70 text-center">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <p>© 2026 JR SITE LLC • Puerto Rico</p>
+            <p class="mt-2">Email: <a href="mailto:Jrsitellc@hotmail.com" class="hover:text-red-400">Jrsitellc@hotmail.com</a></p>
+            <p>Phone: (787) 278-1125</p>
+        </div>
+    </footer>
+
+    <script>
+        // Reliable lightbox
+        function showImage(src) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-image');
+            img.src = src;
+            lightbox.classList.add('active');
+        }
+
+        // Close lightbox when clicking outside image
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target.id === 'lightbox') {
+                this.classList.remove('active');
+            }
+        });
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert("Thank you! Your inquiry has been received.\nWe will reply to Jrsitellc@hotmail.com shortly.");
+        }
+    </script>
+</body>
+</html>
