@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JR SITE LLC | Premium Construction | Puerto Rico</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+        .heading-font { font-family: 'Playfair Display', sans-serif; }
+        
+        body { background: #05070f; }
+        
+        .hero-bg { position: relative; min-height: 100vh; overflow: hidden; }
+        .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+        .hero-overlay { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            background: linear-gradient(to bottom, rgba(5,7,15,0.75), rgba(5,7,15,0.92)); 
+            z-index: 1; 
+        }
+        
+        .red-button {
+            background: linear-gradient(90deg, #b91c1c, #ef4444);
+            transition: all 0.4s ease;
+        }
+        .red-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(185, 28, 28, 0.5);
+        }
+        
+        /* Improved Dropdown */
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: all 0.2s ease;
+        }
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        /* Extra padding bridge to prevent gap */
+        .dropdown {
+            position: relative;
+            padding-bottom: 20px; /* creates a safe hover zone */
+        }
+    </style>
+</head>
+<body class="bg-[#05070f] text-white">
+
+    <!-- NAVBAR -->
+    <nav class="bg-[#05070f]/95 backdrop-blur-md border-b border-white/10 sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto px-8 py-6 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <img src="jrsite-logo.png" alt="JR SITE LLC" class="h-12 w-auto">
+                <div>
+                    <h1 class="heading-font text-3xl font-bold tracking-tighter">JR SITE</h1>
+                    <p class="text-[10px] text-red-400 tracking-[2px] -mt-1">LLC • PUERTO RICO</p>
+                </div>
+            </div>
+
+            <div class="hidden md:flex items-center gap-10 text-sm uppercase tracking-widest font-medium">
+                <a href="#services" class="hover:text-red-400">SERVICES</a>
+                <a href="#projects" class="hover:text-red-400">PROJECTS</a>
+                
+                <!-- COMPANY Dropdown - Fixed -->
+                <div class="relative dropdown group">
+                    <button class="hover:text-red-400 flex items-center gap-1">
+                        COMPANY 
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </button>
+                    <div class="dropdown-menu absolute right-0 mt-3 w-52 bg-[#0a0f1c] border border-white/10 rounded-2xl py-4 shadow-2xl z-50">
+                        <a href="#mission" class="block px-6 py-3 hover:bg-white/10">MISSION</a>
+                        <a href="#careers" class="block px-6 py-3 hover:bg-white/10">CAREERS</a>
+                        <a href="#reviews" class="block px-6 py-3 hover:bg-white/10">REVIEWS</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <div class="flex border border-white/20 rounded-full overflow-hidden text-xs font-medium">
+                    <button onclick="switchLanguage('en')" id="lang-en" class="px-5 py-2 bg-white/10">EN</button>
+                    <button onclick="switchLanguage('es')" id="lang-es" class="px-5 py-2 hover:bg-white/10">ES</button>
+                </div>
+                <a href="#contact" class="red-button px-8 py-3.5 rounded-2xl font-semibold text-sm tracking-wider">
+                    REQUEST QUOTE
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- The rest of your page (hero, services, projects, mission, careers, reviews, contact) stays exactly the same as the previous full version. -->
+
+    <!-- Paste the full previous code body content here (hero through footer) -->
+
+    <script>
+        // Your existing language switch function goes here (from previous versions)
+        function switchLanguage(lang) {
+            // ... full translation logic
+        }
+    </script>
+</body>
+</html>
