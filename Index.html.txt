@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JR SITE LLC - Puerto Rico's premium construction & asphalt company. Asphalt paving, earthwork, demolition, and general construction with excellence.">
+    <title>JR SITE LLC | Premium Construction & Asphalt | Puerto Rico</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+        
+        :root { --gold: #d4af77; }
+        
+        * { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        
+        .heading-font { font-family: 'Playfair Display', sans-serif; }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(15,23,42,0.8), rgba(15,23,42,0.9)), url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat fixed;
+        }
+        
+        .nav-link:after {
+            content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: var(--gold);
+        }
+        .nav-link:hover:after { width: 100%; }
+        
+        .gold-button {
+            background: linear-gradient(90deg, #d4af77, #f5e8c7);
+            color: #0f172a;
+        }
+        .gold-button:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(212,175,119,0.4); }
+        
+        .review-card { transition: transform 0.3s; }
+        .review-card:hover { transform: translateY(-5px); }
+    </style>
+</head>
+<body class="bg-slate-950 text-white font-sans">
+    <!-- NAVBAR -->
+    <nav class="bg-slate-950 border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 bg-gradient-to-br from-amber-400 to-yellow-600 rounded-2xl flex items-center justify-center">
+                    <i class="fa-solid fa-hard-hat text-slate-950 text-3xl"></i>
+                </div>
+                <div>
+                    <h1 class="heading-font text-3xl font-bold tracking-tight">JR SITE</h1>
+                    <p class="text-[10px] text-amber-400 tracking-[2px] -mt-1">LLC • PUERTO RICO</p>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm uppercase font-medium">
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#reviews" class="nav-link">Reviews</a>
+                <a href="#about" class="nav-link">About</a>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <a href="tel:7872781125" class="hidden sm:flex items-center gap-2 px-6 h-11 border border-slate-700 rounded-2xl hover:border-amber-400">
+                    <i class="fa-solid fa-phone"></i> (787) 278-1125
+                </a>
+                <a href="#contact" class="gold-button px-8 py-3 rounded-2xl font-semibold flex items-center gap-2 shadow-lg">
+                    GET FREE QUOTE <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero-bg min-h-screen flex items-center">
+        <div class="max-w-screen-2xl mx-auto px-8 pt-20">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-5 py-2 rounded-full text-sm mb-6">
+                    <span class="text-amber-400">🇵🇷</span> PUERTO RICO'S PREMIUM CONSTRUCTION PARTNER
+                </div>
+                <h1 class="heading-font text-6xl md:text-7xl leading-none font-bold tracking-tighter">
+                    WE BUILD THE<br>FUTURE OF<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-400">PUERTO RICO</span>
+                </h1>
+                <p class="mt-6 text-xl text-slate-200">Luxury asphalt paving • Expert earthwork • Precision demolition • World-class general construction</p>
+                
+                <div class="mt-10 flex flex-wrap gap-4">
+                    <a href="#contact" class="gold-button text-lg px-10 py-5 rounded-3xl font-semibold flex items-center gap-3">
+                        REQUEST YOUR QUOTE TODAY
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="https://www.instagram.com/jrsitellc/" target="_blank" class="border border-white/60 hover:border-amber-400 px-8 py-5 rounded-3xl flex items-center gap-2 text-lg">
+                        <i class="fa-brands fa-instagram"></i> @jrsitellc
+                    </a>
+                </div>
+                
+                <div class="mt-16 flex items-center gap-12 text-sm">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-star text-amber-400"></i>
+                        <span class="font-medium">5.0 • Trusted Excellence</span>
+                    </div>
+                    <div class="h-8 w-px bg-white/30"></div>
+                    <div>Serving Caguas • Dorado • San Juan • Island-wide</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-24 bg-slate-900">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="text-center mb-16">
+                <span class="uppercase text-amber-400 text-sm font-semibold tracking-widest">Our Expertise</span>
+                <h2 class="heading-font text-5xl font-semibold mt-3">Premium Services Delivered with Pride</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-slate-800 rounded-3xl p-8 hover:-translate-y-2 group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-2xl flex items-center justify-center text-slate-950 text-4xl mb-6 group-hover:rotate-6">🛣️</div>
+                    <h3 class="text-2xl font-semibold">Asphalt Paving & Milling</h3>
+                    <p class="mt-4 text-slate-400">Cold milling, hot mix asphalt, seal coating, and precision paving for roads, commercial lots, and luxury developments.</p>
+                </div>
+                <div class="bg-slate-800 rounded-3xl p-8 hover:-translate-y-2 group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-2xl flex items-center justify-center text-slate-950 text-4xl mb-6 group-hover:rotate-6">🚜</div>
+                    <h3 class="text-2xl font-semibold">Earthwork & Excavation</h3>
+                    <p class="mt-4 text-slate-400">Site preparation, grading, and large-scale earth moving with modern heavy equipment.</p>
+                </div>
+                <div class="bg-slate-800 rounded-3xl p-8 hover:-translate-y-2 group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-2xl flex items-center justify-center text-slate-950 text-4xl mb-6 group-hover:rotate-6">🏗️</div>
+                    <h3 class="text-2xl font-semibold">Demolition & Clearing</h3>
+                    <p class="mt-4 text-slate-400">Safe, efficient demolition and complete site clearing across Puerto Rico.</p>
+                </div>
+                <div class="bg-slate-800 rounded-3xl p-8 hover:-translate-y-2 group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-2xl flex items-center justify-center text-slate-950 text-4xl mb-6 group-hover:rotate-6">🏢</div>
+                    <h3 class="text-2xl font-semibold">General Construction</h3>
+                    <p class="mt-4 text-slate-400">Full-service infrastructure, commercial, and turnkey construction projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS / SOCIAL PROOF -->
+    <section id="reviews" class="py-24 bg-white text-slate-950">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="text-center mb-16">
+                <span class="text-amber-400 font-bold">REAL CLIENTS • REAL RESULTS</span>
+                <h2 class="heading-font text-5xl font-semibold mt-3">What Puerto Rico Says About Us</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="review-card bg-slate-100 p-8 rounded-3xl">
+                    <div class="flex text-amber-400 mb-4">★★★★★</div>
+                    <p class="italic">"A prestigious company with quality service. Professionalism at its best."</p>
+                    <div class="mt-6 font-medium">William Burgos</div>
+                    <div class="text-sm text-slate-500">Local Guide • 4 years ago</div>
+                </div>
+                <div class="review-card bg-slate-100 p-8 rounded-3xl">
+                    <div class="flex text-amber-400 mb-4">★★★★★</div>
+                    <p class="italic">"Excellent service"</p>
+                    <div class="mt-6 font-medium">Ivanez</div>
+                    <div class="text-sm text-slate-500">1 year ago</div>
+                </div>
+                <div class="review-card bg-slate-100 p-8 rounded-3xl">
+                    <div class="flex text-amber-400 mb-4">★★★★☆</div>
+                    <p class="italic">"Good"</p>
+                    <div class="mt-6 font-medium">Carlos Diaz</div>
+                    <div class="text-sm text-slate-500">Local Guide • 5 years ago</div>
+                </div>
+            </div>
+            <div class="text-center mt-12 text-sm text-slate-500">More reviews available on Google and our social channels</div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-24 bg-slate-950">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <h2 class="heading-font text-5xl font-semibold text-center mb-16">Signature Projects Across the Island</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="group rounded-3xl overflow-hidden bg-slate-900">
+                    <div class="h-80 bg-cover bg-center" style="background-image:url('https://picsum.photos/id/1015/800/600')"></div>
+                    <div class="p-8">
+                        <p class="uppercase text-xs text-amber-400">Asphalt Paving • San Juan</p>
+                        <h4 class="text-2xl font-semibold mt-2">Bayamón Commercial Plaza</h4>
+                    </div>
+                </div>
+                <div class="group rounded-3xl overflow-hidden bg-slate-900">
+                    <div class="h-80 bg-cover bg-center" style="background-image:url('https://picsum.photos/id/133/800/600')"></div>
+                    <div class="p-8">
+                        <p class="uppercase text-xs text-amber-400">Earthwork • Caguas</p>
+                        <h4 class="text-2xl font-semibold mt-2">Caguas Corporate Campus</h4>
+                    </div>
+                </div>
+                <div class="group rounded-3xl overflow-hidden bg-slate-900">
+                    <div class="h-80 bg-cover bg-center" style="background-image:url('https://picsum.photos/id/201/800/600')"></div>
+                    <div class="p-8">
+                        <p class="uppercase text-xs text-amber-400">Demolition & Construction • Dorado</p>
+                        <h4 class="text-2xl font-semibold mt-2">Dorado Beach Resort Expansion</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="https://www.instagram.com/jrsitellc/" target="_blank" class="inline-flex items-center gap-2 text-amber-400 font-medium">See more on Instagram @jrsitellc <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-24 bg-white text-slate-950">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="heading-font text-5xl font-semibold">Puerto Rican Roots. Uncompromising Quality.</h2>
+                    <div class="mt-8 space-y-6 text-lg text-slate-600">
+                        <p>JR SITE LLC is a proudly Puerto Rican company specializing in asphalt paving, earthwork, demolition, and general construction.</p>
+                        <p>With a modern fleet and experienced local crews, we deliver premium results that stand the test of time — from major infrastructure to luxury developments.</p>
+                    </div>
+                    <div class="mt-12 flex gap-8 text-sm">
+                        <div><strong>100% Puerto Rico Owned</strong></div>
+                        <div><strong>Fully Licensed & Insured</strong></div>
+                        <div><strong>Modern Equipment Fleet</strong></div>
+                    </div>
+                </div>
+                <div class="bg-slate-950 text-white p-12 rounded-3xl">
+                    <p class="text-2xl italic">"Building the future of Puerto Rico — one premium project at a time."</p>
+                    <div class="mt-8 text-amber-400">— JR SITE LLC Team</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 bg-slate-950">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="grid lg:grid-cols-12 gap-16">
+                <div class="lg:col-span-5">
+                    <h2 class="heading-font text-5xl font-semibold">Let's Build Something Extraordinary</h2>
+                    <p class="mt-6 text-slate-300">Tell us about your project. Our team responds quickly.</p>
+                    <div class="mt-12">
+                        <a href="tel:7872781125" class="block text-4xl font-semibold hover:text-amber-400">(787) 278-1125</a>
+                        <a href="https://www.instagram.com/jrsitellc/" target="_blank" class="mt-6 block text-2xl hover:text-amber-400">@jrsitellc</a>
+                    </div>
+                </div>
+                <div class="lg:col-span-7 bg-white text-slate-950 rounded-3xl p-10">
+                    <form id="contact-form" onsubmit="handleSubmit(event); return false;">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-medium mb-2">NAME</label>
+                                <input type="text" id="name" class="w-full border border-slate-300 rounded-2xl px-5 py-4" placeholder="Your full name" required>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium mb-2">PHONE</label>
+                                <input type="tel" id="phone" class="w-full border border-slate-300 rounded-2xl px-5 py-4" placeholder="(787) ___-____" required>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <label class="block text-xs font-medium mb-2">PROJECT TYPE</label>
+                            <select id="type" class="w-full border border-slate-300 rounded-2xl px-5 py-4">
+                                <option>Asphalt Paving</option>
+                                <option>Earthwork / Excavation</option>
+                                <option>Demolition</option>
+                                <option>General Construction</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="mt-6">
+                            <label class="block text-xs font-medium mb-2">DETAILS</label>
+                            <textarea id="message" rows="5" class="w-full border border-slate-300 rounded-3xl px-5 py-4" placeholder="Describe your project..."></textarea>
+                        </div>
+                        <button type="submit" class="gold-button w-full mt-10 py-5 rounded-3xl text-lg font-semibold">SEND INQUIRY →</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-16 text-white/70">
+        <div class="max-w-screen-2xl mx-auto px-8 text-sm">
+            <div class="flex flex-wrap justify-between gap-y-10">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fa-solid fa-hard-hat text-amber-400 text-2xl"></i>
+                        <span class="heading-font text-2xl font-bold text-white">JR SITE LLC</span>
+                    </div>
+                    <p>Proudly serving Puerto Rico with premium construction and asphalt solutions.</p>
+                </div>
+                <div>
+                    <p class="font-medium mb-2">Contact</p>
+                    <p>(787) 278-1125</p>
+                    <p class="mt-6">Follow us: <a href="https://www.instagram.com/jrsitellc/" target="_blank" class="hover:text-white">@jrsitellc</a></p>
+                </div>
+                <div class="text-xs">
+                    © 2026 JR SITE LLC • All Rights Reserved<br>
+                    Licensed • Bonded • Insured • Puerto Rico
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert("Thank you! Your inquiry has been received. JR SITE LLC will contact you shortly. 🇵🇷");
+            // In production, connect to a form backend (Formspree, EmailJS, etc.)
+        }
+        
+        // Tailwind script already loaded via CDN
+    </script>
+</body>
+</html>
