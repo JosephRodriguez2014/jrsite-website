@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JR SITE LLC | Premium Construction | Puerto Rico</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+
+```
+    .heading-font { font-family: 'Playfair Display', sans-serif; }
+    body { background: #05070f; color: white; font-family: 'Inter', system-ui, sans-serif; }
+    
+    .hero-bg {
+        position: relative;
+        min-height: 100vh;
+        overflow: hidden;
+    }
+    .hero-video {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+    .hero-overlay {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: linear-gradient(to bottom, rgba(5,7,15,0.45), rgba(5,7,15,0.65));
+        z-index: 1;
+    }
+    
+    .nav-link {
+        position: relative;
+        transition: color 0.3s ease;
+    }
+    .nav-link:after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background: #ef4444;
+        transition: width 0.3s ease;
+    }
+    .nav-link:hover:after { width: 100%; }
+    
+    .red-button {
+        background: linear-gradient(90deg, #b91c1c, #ef4444);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .red-button:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 30px -10px rgba(185, 28, 28, 0.5);
+    }
+
+    /* ── DROPDOWN FIX ──────────────────────────────────────────
+       Removed padding-bottom that was pushing the button out of
+       the navbar flex row. The gap to the menu is now handled by
+       top: calc(100% + 16px) on the menu itself, plus an
+       invisible ::after bridge so the mouse can reach the menu
+       without the hover state collapsing.
+    ───────────────────────────────────────────────────────────── */
+    .dropdown {
+        position: relative;
+    }
+    .dropdown button {
+        height: 28px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .dropdown-menu {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(12px);
+        transition: all 0.25s ease;
+        top: calc(100% + 16px);
+    }
+    .dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    /* Invisible bridge: keeps hover active while mouse travels
+       from the button down to the menu panel */
+    .dropdown::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 20px;
+    }
+    
+    /* Lightbox */
+    #lightbox {
+        display: flex;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.95);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.25s ease;
+        pointer-events: none;
+    }
+    #lightbox.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+    #lightbox img {
+        max-width: 92%;
+        max-height: 92vh;
+        border-radius: 16px;
+        box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.6);
+    }
+
+    /* ── PROJECT GRID FIX ──────────────────────────────────────
+       Each project card is now a flex column so the image grid
+       always sits in the same vertical zone regardless of how
+       long the title text is.  The title/location block has a
+       fixed min-height so every card's grid starts at the same
+       point across the row.
+    ───────────────────────────────────────────────────────────── */
+    .project-card {
+        display: flex;
+        flex-direction: column;
+    }
+    .project-card-header {
+        min-height: 110px;   /* enough for two-line titles */
+    }
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+    .project-grid img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 12px;
+        transition: transform 0.4s ease;
+        cursor: pointer;
+        display: block;
+    }
+    .project-grid img:hover {
+        transform: scale(1.04);
+    }
+</style>
+```
+
+</head>
+<body>
+
+```
+<!-- NAVBAR -->
+<nav class="bg-[#05070f]/95 backdrop-blur-md border-b border-white/10 sticky top-0 z-50">
+    <div class="max-w-screen-2xl mx-auto px-8 py-6 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+            <img src="jrsite-logo.png" alt="JR SITE LLC" class="h-12 w-auto object-contain">
+            <div>
+                <h1 class="heading-font text-3xl font-bold tracking-tighter">
+                    JR SITE LLC
+                </h1>
+                <p class="text-[10px] text-red-400 tracking-[2px] -mt-1">PUERTO RICO</p>
+            </div>
+        </div>
+
+        <div class="hidden md:flex items-center gap-10 text-sm uppercase tracking-widest font-medium">
+            <a href="#services" class="nav-link">SERVICES</a>
+            <a href="#projects" class="nav-link">PROJECTS</a>
+            
+            <div class="relative dropdown group">
+                <button class="nav-link flex items-center gap-1">
+                    COMPANY 
+                    <i class="fa-solid fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+                </button>
+                <div class="dropdown-menu absolute w-52 bg-[#0a0f1c] border border-white/10 rounded-2xl py-5 shadow-2xl z-50 right-0">
+                    <a href="#mission" class="block px-6 py-3 hover:bg-white/10">MISSION</a>
+                    <a href="#careers" class="block px-6 py-3 hover:bg-white/10">CAREERS</a>
+                    <a href="#reviews" class="block px-6 py-3 hover:bg-white/10">REVIEWS</a>
+                </div>
+            </div>
+            <a href="#rentals" id="nav-rentals" class="nav-link">RENTALS</a>
+        </div>
+
+        <div class="flex items-center gap-6">
+            <div class="flex border border-white/20 rounded-full overflow-hidden text-xs font-medium">
+                <button onclick="switchLanguage('en')" id="lang-en" class="px-5 py-2 bg-white/10">EN</button>
+                <button onclick="switchLanguage('es')" id="lang-es" class="px-5 py-2 hover:bg-white/10">ES</button>
+            </div>
+            <a href="#contact" id="quote-btn-nav" class="red-button px-8 py-3.5 rounded-2xl font-semibold text-sm tracking-wider">
+                REQUEST QUOTE
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero-bg flex items-center relative">
+    <video class="hero-video" autoplay loop muted playsinline>
+        <source src="Hero-imageproject2.MP4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+
+    <div class="max-w-screen-2xl mx-auto px-8 relative z-10 pt-20">
+        <div class="max-w-3xl">
+            <h1 id="hero-title" class="heading-font text-7xl md:text-[92px] leading-none font-bold tracking-tighter">
+                BUILDING THE<br>FUTURE OF<br><span class="text-red-400">PUERTO RICO</span>
+            </h1>
+            
+            <p id="hero-subtitle" class="mt-8 text-xl md:text-2xl text-slate-300 max-w-lg">
+                Luxury asphalt paving • Expert earthwork • Precision demolition • World-class general construction • Aggregate Hauling
+            </p>
+
+            <div class="mt-12 flex flex-wrap gap-5">
+                <a href="#contact" id="quote-btn" class="red-button text-lg px-10 py-6 rounded-3xl font-semibold tracking-wider">
+                    REQUEST YOUR QUOTE TODAY
+                </a>
+                <a href="https://www.instagram.com/jrsitellc/" target="_blank" class="border border-white/30 hover:border-white/60 px-8 py-6 rounded-3xl flex items-center gap-3 text-lg transition-colors">
+                    <i class="fa-brands fa-instagram"></i> @jrsitellc
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- SERVICES -->
+<section id="services" class="py-32">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <div class="text-center mb-20">
+            <h2 id="services-title" class="heading-font text-6xl font-semibold tracking-tight">Our Premium Services</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6" id="services-grid"></div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="py-32 bg-white text-slate-950">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <div class="text-center mb-16">
+            <h2 id="projects-title" class="heading-font text-6xl font-semibold tracking-tight">Featured Projects</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-16">
+
+            <!-- Doctor Center Expansion -->
+            <div class="project-card">
+                <div class="project-card-header">
+                    <h3 class="font-semibold text-2xl mb-2">Doctor Center Expansion</h3>
+                    <p class="text-red-600 mb-4">Dorado, Puerto Rico</p>
+                </div>
+                <div class="project-grid">
+                    <img onclick="showImage(this.src)" src="Project1-HospitalDoradoDoctorCenter1.JPG" alt="Doctor Center 1">
+                    <img onclick="showImage(this.src)" src="Project1-HospitalDoradoDoctorCenter2.JPG" alt="Doctor Center 2">
+                    <img onclick="showImage(this.src)" src="Project1-HospitalDoradoDoctorCenter3.JPG" alt="Doctor Center 3">
+                </div>
+                <p class="mt-6 text-base text-slate-600">Earthwork services</p>
+            </div>
+
+            <!-- Laderas De Palmas -->
+            <div class="project-card">
+                <div class="project-card-header">
+                    <h3 class="font-semibold text-2xl mb-2">Laderas De Palmas</h3>
+                    <p class="text-red-600 mb-4">Humacao, Puerto Rico</p>
+                </div>
+                <div class="project-grid">
+                    <img onclick="showImage(this.src)" src="Project2-LaderasDePalmas,Humacao2.JPG" alt="Laderas 1">
+                    <img onclick="showImage(this.src)" src="Project2-LaderasDePalmas,Humacao3.JPG" alt="Laderas 2">
+                    <img onclick="showImage(this.src)" src="Project2-LaderasDePalmas,Humacao4.JPG" alt="Laderas 3">
+                </div>
+                <p class="mt-6 text-base text-slate-600">Earthwork and Sitework services</p>
+            </div>
+
+            <!-- Hacienda San Miguel -->
+            <div class="project-card">
+                <div class="project-card-header">
+                    <h3 class="font-semibold text-2xl mb-2">Hacienda San Miguel</h3>
+                    <p class="text-red-600 mb-4">San Lorenzo, Puerto Rico</p>
+                </div>
+                <div class="project-grid">
+                    <img onclick="showImage(this.src)" src="Project3-SanLorenzoimage1.JPG" alt="San Miguel 1">
+                    <img onclick="showImage(this.src)" src="Project3-SanLorenzoimage2.JPG" alt="San Miguel 2">
+                    <img onclick="showImage(this.src)" src="Project3-SanLorenzoimage3.JPG" alt="San Miguel 3">
+                </div>
+                <p class="mt-6 text-base text-slate-600">Earthwork and Sitework services</p>
+            </div>
+
+            <!-- Coco Beach Car Pads -->
+            <div class="project-card">
+                <div class="project-card-header">
+                    <h3 class="font-semibold text-2xl mb-2">Coco Beach Resort, Golf Course Car Pads</h3>
+                    <p class="text-red-600 mb-4">Rio Grande, Puerto Rico</p>
+                </div>
+                <div class="project-grid">
+                    <img onclick="showImage(this.src)" src="Project11-Cocobeachcarpads1.JPG" alt="Car Pads 1">
+                    <img onclick="showImage(this.src)" src="Project11-Cocobeachcarpads2.JPG" alt="Car Pads 2">
+                    <img onclick="showImage(this.src)" src="Project11-Cocobeachcarpads3.JPG" alt="Car Pads 3">
+                </div>
+                <p class="mt-6 text-base text-slate-600">Asphalt Services</p>
+            </div>
+
+            <!-- Coco Beach Condos -->
+            <div class="project-card">
+                <div class="project-card-header">
+                    <h3 class="font-semibold text-2xl mb-2">Coco Beach Resort, Condos and Beach Club</h3>
+                    <p class="text-red-600 mb-4">Rio Grande, Puerto Rico</p>
+                </div>
+                <div class="project-grid">
+                    <img onclick="showImage(this.src)" src="Project6-Cocobeachcondo1.JPG" alt="Condos 1">
+                    <img onclick="showImage(this.src)" src="Project6-Cocobeachcondo2.JPG" alt="Condos 2">
+                    <img onclick="showImage(this.src)" src="Project6-Cocobeachcondo3.JPG" alt="Condos 3">
+                </div>
+                <p class="mt-6 text-base text-slate-600">Earthwork Services</p>
+            </div>
+
+            <!-- Coco Beach Residences -->
+            <div class="project-card">
+                <div class="project-card-header">
+                    <h3 class="font-semibold text-2xl mb-2">Coco Beach Resort, Residences</h3>
+                    <p class="text-red-600 mb-4">Rio Grande, Puerto Rico</p>
+                </div>
+                <div class="project-grid">
+                    <img onclick="showImage(this.src)" src="Project7-Cocobeachresidences1.JPG" alt="Residences 1">
+                    <img onclick="showImage(this.src)" src="Project7-Cocobeachresidences2.JPG" alt="Residences 2">
+                    <img onclick="showImage(this.src)" src="Project7-Cocobeachresidences3.JPG" alt="Residences 3">
+                </div>
+                <p class="mt-6 text-base text-slate-600">Earthwork Services</p>
+            </div>
+
+            <!-- Amazon Dorado Parking Lot -->
+            <div class="project-card">
+                <div class="project-card-header">
+                    <h3 class="font-semibold text-2xl mb-2">Amazon Dorado Parking Lot</h3>
+                    <p class="text-red-600 mb-4">Dorado, Puerto Rico</p>
+                </div>
+                <div class="project-grid">
+                    <img onclick="showImage(this.src)" src="Project5-Amazondorado1.JPG" alt="Amazon 1">
+                    <img onclick="showImage(this.src)" src="Project5-Amazondorado2.JPG" alt="Amazon 2">
+                    <img onclick="showImage(this.src)" src="Project5-Amazondorado3.JPG" alt="Amazon 3">
+                </div>
+                <p class="mt-6 text-base text-slate-600">Asphalt Services</p>
+            </div>
+
+            <!-- Dorado Beach Resort, Livingston -->
+            <div class="project-card">
+                <div class="project-card-header">
+                    <h3 class="font-semibold text-2xl mb-2">Dorado Beach Resort, Livingston</h3>
+                    <p class="text-red-600 mb-4">Dorado, Puerto Rico</p>
+                </div>
+                <div class="project-grid">
+                    <img onclick="showImage(this.src)" src="Project10-Livingston1.JPG" alt="Livingston 1">
+                    <img onclick="showImage(this.src)" src="Project10-Livingston2.JPG" alt="Livingston 2">
+                    <img onclick="showImage(this.src)" src="Project10-Livingston3.JPG" alt="Livingston 3">
+                </div>
+                <p class="mt-6 text-base text-slate-600">Earthwork Services</p>
+            </div>
+
+            <!-- Dorado Beach Resort, West Golf Course -->
+            <div class="project-card">
+                <div class="project-card-header">
+                    <h3 class="font-semibold text-2xl mb-2">Dorado Beach Resort, West Golf Course</h3>
+                    <p class="text-red-600 mb-4">Dorado, Puerto Rico</p>
+                </div>
+                <div class="project-grid">
+                    <img onclick="showImage(this.src)" src="Project4-Westgolfcourse1.JPG" alt="West Golf 1">
+                    <img onclick="showImage(this.src)" src="Project4-Westgolfcourse2.JPG" alt="West Golf 2">
+                    <img onclick="showImage(this.src)" src="Project4-Westgolfcourse3.JPG" alt="West Golf 3">
+                </div>
+                <p class="mt-6 text-base text-slate-600">Earthwork Services</p>
+            </div>
+
+            <!-- Dorado Beach Resort, West Beach Apartments -->
+            <div class="project-card">
+                <div class="project-card-header">
+                    <h3 class="font-semibold text-2xl mb-2">Dorado Beach Resort, West Beach Apartments</h3>
+                    <p class="text-red-600 mb-4">Dorado, Puerto Rico</p>
+                </div>
+                <div class="project-grid">
+                    <img onclick="showImage(this.src)" src="Project9-WEST BEACHAPARTMENTDORADO1.JPG" alt="West Beach 1">
+                    <img onclick="showImage(this.src)" src="Project9-WEST BEACHAPARTMENTDORADO2.JPG" alt="West Beach 2">
+                    <img onclick="showImage(this.src)" src="Project9-WEST BEACHAPARTMENTDORADO3.JPG" alt="West Beach 3">
+                </div>
+                <p class="mt-6 text-base text-slate-600">Earthwork Services</p>
+            </div>
+
+            <!-- Carretera PR-165 -->
+            <div class="project-card">
+                <div class="project-card-header">
+                    <h3 class="font-semibold text-2xl mb-2">Carretera PR-165</h3>
+                    <p class="text-red-600 mb-4">Dorado, Puerto Rico</p>
+                </div>
+                <div class="project-grid">
+                    <img onclick="showImage(this.src)" src="Project8-PR1651.JPG" alt="PR-165 1">
+                    <img onclick="showImage(this.src)" src="Project8-PR1652.JPG" alt="PR-165 2">
+                    <img onclick="showImage(this.src)" src="Project8-PR1653.JPG" alt="PR-165 3">
+                </div>
+                <p class="mt-6 text-base text-slate-600">Asphalt and Milling Services</p>
+            </div>
+
+            <!-- Dorado Beach Resort, The Isles -->
+            <div class="project-card">
+                <div class="project-card-header">
+                    <h3 class="font-semibold text-2xl mb-2">Dorado Beach Resort, The Isles</h3>
+                    <p class="text-red-600 mb-4">Dorado, Puerto Rico</p>
+                </div>
+                <div class="project-grid">
+                    <img onclick="showImage(this.src)" src="Project8-Lasislas1.JPG" alt="The Isles 1">
+                    <img onclick="showImage(this.src)" src="Project8-Lasislas2.JPG" alt="The Isles 2">
+                    <img onclick="showImage(this.src)" src="Project8-Lasislas3.JPG" alt="The Isles 3">
+                </div>
+                <p class="mt-6 text-base text-slate-600">Earthwork Services</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- MISSION -->
+<section id="mission" class="py-32">
+    <div class="max-w-screen-2xl mx-auto px-8 text-center">
+        <h2 id="mission-title" class="heading-font text-6xl font-semibold tracking-tight mb-12">Our Mission</h2>
+        <div id="mission-content" class="max-w-3xl mx-auto text-slate-300 text-lg leading-relaxed">
+            <p>At JR SITE LLC, we are the evolution of decades of hands-on experience in Puerto Rico's infrastructure industry. Born as a family company with deep roots in asphalt paving and earthwork, we have grown into one of the island's largest and most trusted construction firms. Our mission is to build a stronger, better Puerto Rico for current and future generations while creating meaningful opportunities for new talent to rise and showcase their potential.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CAREERS -->
+<section id="careers" class="py-32 bg-white text-slate-950">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <div class="text-center mb-16">
+            <h2 id="careers-title" class="heading-font text-6xl font-semibold tracking-tight">Join Our Team</h2>
+            <p id="careers-subtitle" class="mt-4 text-slate-400 max-w-md mx-auto">We are always looking for talented, hardworking individuals to grow with JR SITE LLC.</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="careers-grid"></div>
+        <div class="text-center mt-12 text-slate-400" id="careers-resume-line">
+            Send your resume to <a href="mailto:Jrsitellc@hotmail.com" class="text-red-400 hover:underline">Jrsitellc@hotmail.com</a>
+        </div>
+    </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="py-32">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <div class="text-center mb-16">
+            <h2 id="reviews-title" class="heading-font text-6xl font-semibold tracking-tight">What Our Clients Say</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white/5 p-8 rounded-3xl">
+                <p class="italic">"Excellent service and very professional team."</p>
+                <p class="mt-8 font-medium">— Ivanez</p>
+            </div>
+            <div class="bg-white/5 p-8 rounded-3xl">
+                <p class="italic">"A prestigious company with quality service."</p>
+                <p class="mt-8 font-medium">— William Burgos</p>
+            </div>
+            <div class="bg-white/5 p-8 rounded-3xl">
+                <p class="italic">"Good work and reliable."</p>
+                <p class="mt-8 font-medium">— Carlos Diaz</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- RENTALS -->
+<section id="rentals" class="py-32 bg-white text-slate-950">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <div class="text-center mb-16">
+            <p id="rentals-label" class="text-red-600 text-sm font-semibold tracking-[3px] uppercase mb-4">Equipment Rentals</p>
+            <h2 id="rentals-title" class="heading-font text-6xl font-semibold tracking-tight">The Right Equipment<br>for Every Project</h2>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <p id="rentals-body1" class="text-slate-600 text-lg leading-relaxed mb-6">
+                    JR SITE LLC maintains an extensive fleet of heavy construction equipment available for rent throughout Puerto Rico. Whether you are overseeing a large-scale infrastructure development or a focused site operation, we have the machinery and the expertise to keep your project moving forward.
+                </p>
+                <p id="rentals-body2" class="text-slate-600 text-lg leading-relaxed mb-10">
+                    Our team will work directly with you to understand your specific project requirements and recommend the ideal equipment solution — delivering reliability, performance, and efficiency on every job.
+                </p>
+                <a href="#contact" id="rentals-cta" class="inline-block red-button px-10 py-5 rounded-3xl text-white font-semibold tracking-wider">
+                    INQUIRE ABOUT RENTALS →
+                </a>
+            </div>
+            <div class="grid grid-cols-2 gap-5">
+                <div class="bg-slate-100 rounded-3xl p-8 flex flex-col gap-3">
+                    <i class="fa-solid fa-tractor text-red-600 text-3xl"></i>
+                    <h3 id="rentals-cat1" class="font-semibold text-xl">Earthmoving Equipment</h3>
+                    <p class="text-slate-500 text-sm">Excavators, bulldozers, motor graders, and compactors.</p>
+                </div>
+                <div class="bg-slate-100 rounded-3xl p-8 flex flex-col gap-3">
+                    <i class="fa-solid fa-truck-moving text-red-600 text-3xl"></i>
+                    <h3 id="rentals-cat2" class="font-semibold text-xl">Hauling & Transport</h3>
+                    <p class="text-slate-500 text-sm">Dump trucks, articulated haulers, and material transport vehicles.</p>
+                </div>
+                <div class="bg-slate-100 rounded-3xl p-8 flex flex-col gap-3">
+                    <i class="fa-solid fa-road text-red-600 text-3xl"></i>
+                    <h3 id="rentals-cat3" class="font-semibold text-xl">Paving Equipment</h3>
+                    <p class="text-slate-500 text-sm">Asphalt pavers, rollers, and milling machines.</p>
+                </div>
+                <div class="bg-slate-100 rounded-3xl p-8 flex flex-col gap-3">
+                    <i class="fa-solid fa-helmet-safety text-red-600 text-3xl"></i>
+                    <h3 id="rentals-cat4" class="font-semibold text-xl">Specialty Equipment</h3>
+                    <p class="text-slate-500 text-sm">Cranes, loaders, and site-specific machinery on request.</p>
+                </div>
+            </div>
+        </div>
+        <div class="mt-16 bg-slate-950 text-white rounded-3xl px-12 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <h3 id="rentals-callout-title" class="heading-font text-3xl font-semibold mb-2">Not sure what you need?</h3>
+                <p id="rentals-callout-body" class="text-slate-300">Tell us about your project and our team will recommend the right equipment.</p>
+            </div>
+            <a href="#contact" class="red-button whitespace-nowrap px-10 py-5 rounded-3xl font-semibold tracking-wider text-white">
+                CONTACT US →
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-32 bg-white text-slate-950">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <div class="grid lg:grid-cols-12 gap-16">
+            <div class="lg:col-span-5">
+                <h2 id="contact-title" class="heading-font text-6xl font-semibold tracking-tight">Let's Build Something Extraordinary</h2>
+                <p id="contact-subtitle" class="mt-6 text-slate-600">Tell us about your project.</p>
+                <div class="mt-12 space-y-8">
+                    <div>
+                        <p class="font-medium text-red-400">Call us</p>
+                        <a href="tel:7872781125" class="text-3xl hover:text-red-400">(787) 278-1125</a>
+                    </div>
+                    <div>
+                        <p class="font-medium text-red-400">Email us</p>
+                        <a href="/cdn-cgi/l/email-protection#a1ebd3d2c8d5c4cdcdc2e1c9ced5ccc0c8cd8fc2cecc" class="text-3xl hover:text-red-400"><span class="__cf_email__" data-cfemail="ace6dedfc5d8c9c0c0cfecc4c3d8c1cdc5c082cfc3c1">[email&#160;protected]</span></a>
+                    </div>
+                    <div>
+                        <p class="font-medium text-red-400">Instagram</p>
+                        <a href="https://www.instagram.com/jrsitellc/" target="_blank" class="text-3xl hover:text-red-400">@jrsitellc</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-7 bg-[#05070f] text-white rounded-3xl p-10">
+                <form onsubmit="handleSubmit(event); return false;">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-medium mb-2" id="label-name">NAME</label>
+                            <input type="text" required class="w-full bg-white/10 border border-white/20 rounded-2xl px-5 py-4 text-white" placeholder="Your name">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium mb-2" id="label-phone">PHONE</label>
+                            <input type="tel" required class="w-full bg-white/10 border border-white/20 rounded-2xl px-5 py-4 text-white" placeholder="(787) ___-____">
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <label class="block text-xs font-medium mb-2" id="label-email">EMAIL</label>
+                        <input type="email" class="w-full bg-white/10 border border-white/20 rounded-2xl px-5 py-4 text-white" placeholder="your@email.com">
+                    </div>
+                    <div class="mt-6">
+                        <label class="block text-xs font-medium mb-2" id="label-type">PROJECT TYPE</label>
+                        <select class="w-full bg-white/10 border border-white/20 rounded-2xl px-5 py-4 text-white">
+                            <option>Asphalt Paving</option>
+                            <option>Earthwork</option>
+                            <option>Demolition</option>
+                            <option>General Construction</option>
+                            <option>Trucking / Aggregate Hauling</option>
+                        </select>
+                    </div>
+                    <div class="mt-6">
+                        <label class="block text-xs font-medium mb-2" id="label-message">MESSAGE</label>
+                        <textarea rows="5" class="w-full bg-white/10 border border-white/20 rounded-3xl px-5 py-4 text-white" placeholder="Describe your project..."></textarea>
+                    </div>
+                    <button type="submit" id="submit-btn" class="red-button w-full mt-10 py-5 rounded-3xl text-lg font-semibold">SEND INQUIRY →</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-black py-12 text-white/70 text-center">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <p>© 2026 JR SITE LLC • Puerto Rico</p>
+        <p class="mt-2">Email: <a href="/cdn-cgi/l/email-protection#c78db5b4aeb3a2ababa487afa8b3aaa6aeabe9a4a8aa" class="hover:text-red-400"><span class="__cf_email__" data-cfemail="a4eed6d7cdd0c1c8c8c7e4cccbd0c9c5cdc88ac7cbc9">[email&#160;protected]</span></a></p>
+        <p>Phone: (787) 278-1125</p>
+    </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="if(event.target.id === 'lightbox') this.classList.remove('active')">
+    <img id="lightbox-image" src="" alt="">
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const translations = {
+        en: {
+            navServices: "SERVICES",
+            navProjects: "PROJECTS",
+            navCompany: "COMPANY",
+            navMission: "MISSION",
+            navCareers: "CAREERS",
+            navReviews: "REVIEWS",
+            heroTitle: "BUILDING THE FUTURE OF PUERTO RICO",
+            heroSubtitle: "Luxury asphalt paving • Expert earthwork • Precision demolition • World-class general construction • Aggregate Hauling",
+            quoteBtn: "REQUEST YOUR QUOTE TODAY",
+            servicesTitle: "Our Premium Services",
+            services: [
+                {title: "Asphalt Paving & Milling", desc: "High-quality hot mix asphalt, cold milling, seal coating and precision paving."},
+                {title: "Earthwork & Excavation", desc: "Site preparation, grading, and large-scale earth moving with modern equipment."},
+                {title: "Demolition & Clearing", desc: "Safe structural demolition and complete site clearing across Puerto Rico."},
+                {title: "General Construction", desc: "Full-service infrastructure and commercial construction projects."},
+                {title: "Trucking / Aggregate Hauling", desc: "Reliable hauling of aggregates, materials, and equipment across Puerto Rico."}
+            ],
+            projectsTitle: "Featured Projects",
+            missionTitle: "Our Mission",
+            missionContent: "At JR SITE LLC, we are the evolution of decades of hands-on experience in Puerto Rico's infrastructure industry. Born as a family company with deep roots in asphalt paving and earthwork, we have grown into one of the island's largest and most trusted construction firms. Our mission is to build a stronger, better Puerto Rico for current and future generations while creating meaningful opportunities for new talent to rise and showcase their potential.",
+            careersTitle: "Join Our Team",
+            careersSubtitle: "We are always looking for talented, hardworking individuals to grow with JR SITE LLC.",
+            careersJobs: [
+                {title: "Welder", desc: "Experienced welders for structural and equipment repair."},
+                {title: "Mechanic", desc: "Heavy equipment mechanics with experience on Caterpillar, Komatsu, and Volvo machinery."},
+                {title: "Earthwork Foreman", desc: "Experienced foreman to lead excavation and site preparation crews."},
+                {title: "Asphalt Laborer", desc: "Hardworking laborers for asphalt paving and milling crews."},
+                {title: "Construction Machine Operator", desc: "Skilled operators for excavators, dozers, loaders, and graders."},
+                {title: "Truck Driver / Aggregate Hauler", desc: "CDL drivers for material hauling and aggregate delivery."}
+            ],
+            reviewsTitle: "What Our Clients Say",
+            applyBtn: "Apply Now →",
+            resumeLine: "Send your resume to",
+            rentalsLabel: "Equipment Rentals",
+            rentalsTitle: "The Right Equipment for Every Project",
+            rentalsBody1: "JR SITE LLC maintains an extensive fleet of heavy construction equipment available for rent throughout Puerto Rico. Whether you are overseeing a large-scale infrastructure development or a focused site operation, we have the machinery and the expertise to keep your project moving forward.",
+            rentalsBody2: "Our team will work directly with you to understand your specific project requirements and recommend the ideal equipment solution — delivering reliability, performance, and efficiency on every job.",
+            rentalsCta: "INQUIRE ABOUT RENTALS →",
+            rentalsCat1: "Earthmoving Equipment",
+            rentalsCat2: "Hauling & Transport",
+            rentalsCat3: "Paving Equipment",
+            rentalsCat4: "Specialty Equipment",
+            rentalsCalloutTitle: "Not sure what you need?",
+            rentalsCalloutBody: "Tell us about your project and our team will recommend the right equipment.",
+            navRentals: "RENTALS",
+            contactTitle: "Let's Build Something Extraordinary",
+            contactSubtitle: "Tell us about your project.",
+            labelName: "NAME", labelPhone: "PHONE", labelEmail: "EMAIL",
+            labelType: "PROJECT TYPE", labelMessage: "MESSAGE",
+            submitBtn: "SEND INQUIRY →"
+        },
+        es: {
+            navServices: "SERVICIOS",
+            navProjects: "PROYECTOS",
+            navCompany: "EMPRESA",
+            navMission: "MISIÓN",
+            navCareers: "CARRERAS",
+            navReviews: "RESEÑAS",
+            heroTitle: "CONSTRUYENDO EL FUTURO DE PUERTO RICO",
+            heroSubtitle: "Pavimentación de asfalto de lujo • Movimiento de tierra experto • Demolición de precisión • Construcción general de clase mundial • Acarreo de agregados",
+            quoteBtn: "SOLICITA TU COTIZACIÓN HOY",
+            servicesTitle: "Nuestros Servicios Premium",
+            services: [
+                {title: "Pavimentación y Fresado de Asfalto", desc: "Asfalto de mezcla en caliente de alta calidad, fresado en frío, sellado y pavimentación de precisión."},
+                {title: "Movimiento de Tierra y Excavación", desc: "Preparación de sitio, nivelación y movimiento de tierra a gran escala con equipo moderno."},
+                {title: "Demolición y Limpieza", desc: "Demolición estructural segura y limpieza completa de sitios en todo Puerto Rico."},
+                {title: "Construcción General", desc: "Proyectos de infraestructura y construcción comercial de servicio completo."},
+                {title: "Camiones / Acarreo de Agregados", desc: "Acarreo confiable de agregados, materiales y equipo en todo Puerto Rico."}
+            ],
+            projectsTitle: "Proyectos Destacados",
+            missionTitle: "Nuestra Misión",
+            missionContent: "En JR SITE LLC, somos la evolución de décadas de experiencia práctica en la industria de infraestructura de Puerto Rico. Nacidos como una empresa familiar con profundas raíces en pavimentación de asfalto y movimiento de tierra, hemos crecido hasta convertirnos en una de las constructoras más grandes y confiables de la isla. Nuestra misión es construir un Puerto Rico más fuerte y mejor para las generaciones actuales y futuras, mientras creamos oportunidades significativas para que el nuevo talento se desarrolle y demuestre su potencial.",
+            careersTitle: "Únete a Nuestro Equipo",
+            careersSubtitle: "Siempre buscamos personas talentosas y trabajadoras para crecer con JR SITE LLC.",
+            careersJobs: [
+                {title: "Soldador", desc: "Soldadores experimentados para reparación estructural y de equipo."},
+                {title: "Mecánico", desc: "Mecánicos de equipo pesado con experiencia en maquinaria Caterpillar, Komatsu y Volvo."},
+                {title: "Capataz de Movimiento de Tierra", desc: "Capataz experimentado para liderar crews de excavación y preparación de sitio."},
+                {title: "Obrero de Asfalto", desc: "Obreros trabajadores para crews de pavimentación y fresado de asfalto."},
+                {title: "Operador de Máquinas de Construcción", desc: "Operadores calificados de excavadoras, bulldozers, cargadores y niveladoras."},
+                {title: "Conductor de Camión / Acarreo de Agregados", desc: "Conductores con CDL para acarreo de materiales y entrega de agregados."}
+            ],
+            reviewsTitle: "Lo que dicen nuestros clientes",
+            applyBtn: "Aplicar Ahora →",
+            resumeLine: "Envía tu currículum a",
+            rentalsLabel: "Alquiler de Equipos",
+            rentalsTitle: "El Equipo Adecuado para Cada Proyecto",
+            rentalsBody1: "JR SITE LLC cuenta con una extensa flota de equipos pesados de construcción disponibles para alquiler en todo Puerto Rico. Ya sea que esté gestionando un desarrollo de infraestructura a gran escala o una operación de sitio específica, contamos con la maquinaria y la experiencia para mantener su proyecto en marcha.",
+            rentalsBody2: "Nuestro equipo trabajará directamente con usted para comprender los requisitos de su proyecto y recomendarle la solución de equipo ideal — garantizando confiabilidad, rendimiento y eficiencia en cada trabajo.",
+            rentalsCta: "CONSULTAR SOBRE ALQUILERES →",
+            rentalsCat1: "Equipo de Movimiento de Tierra",
+            rentalsCat2: "Acarreo y Transporte",
+            rentalsCat3: "Equipo de Pavimentación",
+            rentalsCat4: "Equipo Especializado",
+            rentalsCalloutTitle: "¿No está seguro de lo que necesita?",
+            rentalsCalloutBody: "Cuéntenos sobre su proyecto y nuestro equipo le recomendará el equipo adecuado.",
+            navRentals: "ALQUILERES",
+            contactTitle: "Construyamos Algo Extraordinario",
+            contactSubtitle: "Cuéntanos sobre tu proyecto.",
+            labelName: "NOMBRE", labelPhone: "TELÉFONO", labelEmail: "CORREO",
+            labelType: "TIPO DE PROYECTO", labelMessage: "MENSAJE",
+            submitBtn: "ENVIAR CONSULTA →"
+        }
+    };
+
+    function switchLanguage(lang) {
+        const t = translations[lang];
+        
+        document.querySelector('a[href="#services"]').textContent = t.navServices;
+        document.querySelector('a[href="#projects"]').textContent = t.navProjects;
+        document.querySelector('.dropdown button').childNodes[0].textContent = t.navCompany + ' ';
+        document.querySelector('a[href="#mission"]').textContent = t.navMission;
+        document.querySelector('a[href="#careers"]').textContent = t.navCareers;
+        document.querySelector('a[href="#reviews"]').textContent = t.navReviews;
+        
+        document.getElementById('hero-title').textContent = t.heroTitle;
+        document.getElementById('hero-subtitle').textContent = t.heroSubtitle;
+        document.getElementById('quote-btn').textContent = t.quoteBtn;
+        document.getElementById('quote-btn-nav').textContent = t.quoteBtn;
+        
+        document.getElementById('services-title').textContent = t.servicesTitle;
+        const servicesGrid = document.getElementById('services-grid');
+        servicesGrid.innerHTML = t.services.map(s => `
+            <div class="card bg-white/5 p-8 rounded-3xl">
+                <h3 class="text-2xl font-semibold mb-3">${s.title}</h3>
+                <p class="text-slate-400">${s.desc}</p>
+            </div>
+        `).join('');
+        
+        document.getElementById('projects-title').textContent = t.projectsTitle;
+        
+        document.getElementById('mission-title').textContent = t.missionTitle;
+        document.getElementById('mission-content').innerHTML = `<p>${t.missionContent}</p>`;
+        
+        document.getElementById('careers-title').textContent = t.careersTitle;
+        document.getElementById('careers-subtitle').textContent = t.careersSubtitle;
+        const careersGrid = document.getElementById('careers-grid');
+        careersGrid.innerHTML = t.careersJobs.map(j => `
+            <div class="card bg-slate-100 text-slate-950 p-8 rounded-3xl">
+                <h3 class="text-xl font-semibold mb-3">${j.title}</h3>
+                <p class="text-slate-500 mb-6">${j.desc}</p>
+                <button onclick="alert('${lang === 'es' ? 'Gracias! Te contactaremos pronto.' : 'Thank you! We will contact you soon.'}')" class="text-red-600 font-medium hover:text-red-400">${t.applyBtn}</button>
+            </div>
+        `).join('');
+        document.getElementById('careers-resume-line').innerHTML = `${t.resumeLine} <a href="mailto:Jrsitellc@hotmail.com" class="text-red-400 hover:underline">Jrsitellc@hotmail.com</a>`;
+        
+        document.getElementById('reviews-title').textContent = t.reviewsTitle;
+
+        document.getElementById('nav-rentals').textContent = t.navRentals;
+        document.getElementById('rentals-label').textContent = t.rentalsLabel;
+        document.getElementById('rentals-title').textContent = t.rentalsTitle;
+        document.getElementById('rentals-body1').textContent = t.rentalsBody1;
+        document.getElementById('rentals-body2').textContent = t.rentalsBody2;
+        document.getElementById('rentals-cta').textContent = t.rentalsCta;
+        document.getElementById('rentals-cat1').textContent = t.rentalsCat1;
+        document.getElementById('rentals-cat2').textContent = t.rentalsCat2;
+        document.getElementById('rentals-cat3').textContent = t.rentalsCat3;
+        document.getElementById('rentals-cat4').textContent = t.rentalsCat4;
+        document.getElementById('rentals-callout-title').textContent = t.rentalsCalloutTitle;
+        document.getElementById('rentals-callout-body').textContent = t.rentalsCalloutBody;
+        
+        document.getElementById('contact-title').textContent = t.contactTitle;
+        document.getElementById('contact-subtitle').textContent = t.contactSubtitle;
+        document.getElementById('label-name').textContent = t.labelName;
+        document.getElementById('label-phone').textContent = t.labelPhone;
+        document.getElementById('label-email').textContent = t.labelEmail;
+        document.getElementById('label-type').textContent = t.labelType;
+        document.getElementById('label-message').textContent = t.labelMessage;
+        document.getElementById('submit-btn').textContent = t.submitBtn;
+        
+        document.getElementById('lang-en').classList.toggle('bg-white/10', lang === 'en');
+        document.getElementById('lang-es').classList.toggle('bg-white/10', lang === 'es');
+    }
+
+
+    function showImage(src) {
+        const lightbox = document.getElementById('lightbox');
+        const img = document.getElementById('lightbox-image');
+        img.src = src;
+        lightbox.classList.add('active');
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        alert("Thank you! Your inquiry has been received.\nWe will reply to Jrsitellc@hotmail.com shortly.");
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        switchLanguage('en');
+    });
+</script>
+```
+
+</body>
+</html>
